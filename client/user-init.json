@@ -1,0 +1,93 @@
+[
+  {
+    "firstName": "Petr",
+    "lastName": "Novák",
+    "company": "Hyundai",
+    "email": "daniel1@example.com",
+    "password": "test123"
+  },
+  {
+    "firstName": "Jana",
+    "lastName": "Nováková",
+    "company": "Škoda",
+    "email": "jana@example.com",
+    "password": "test456"
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Brown",
+    "company": "CodeCraft",
+    "email": "liam.brown@codecraft.io",
+    "password": "code123!"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Davis",
+    "company": "InnoSoft",
+    "email": "olivia.davis@innosoft.org",
+    "password": "welcome2024"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Miller",
+    "company": "WebSolutions",
+    "email": "noah.miller@websolutions.dev",
+    "password": "secure@321"
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Wilson",
+    "company": "AppGenix",
+    "email": "ava.wilson@appgenix.com",
+    "password": "avapass2023"
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Taylor",
+    "company": "BlueOcean",
+    "email": "ethan.taylor@blueocean.co",
+    "password": "ocean$view"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Anderson",
+    "company": "NextTech",
+    "email": "sophia.anderson@nexttech.ai",
+    "password": "next@456"
+  },
+  {
+    "firstName": "Mason",
+    "lastName": "Thomas",
+    "company": "DevStars",
+    "email": "mason.thomas@devstars.com",
+    "password": "masonPass!"
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Jackson",
+    "company": "CloudCore",
+    "email": "isabella.jackson@cloudcore.net",
+    "password": "cloudyDay7"
+  },
+  {
+    "firstName": "Logan",
+    "lastName": "White",
+    "company": "CyberWare",
+    "email": "logan.white@cyberware.tech",
+    "password": "cyber2025"
+  },
+  {
+    "firstName": "Mia",
+    "lastName": "Harris",
+    "company": "SmartLoop",
+    "email": "mia.harris@smartloop.io",
+    "password": "loop!321"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Martin",
+    "company": "BrightApps",
+    "email": "james.martin@brightapps.org",
+    "password": "bright*pass"
+  }
+]
