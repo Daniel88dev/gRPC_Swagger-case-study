@@ -5,6 +5,7 @@ import {
   loadPackageDefinition,
 } from "@grpc/grpc-js";
 import path from "node:path";
+import { userHandlers } from "./handlers/userHandlers";
 
 // Load proto definition
 const PROTO_PATH = path.join(__dirname, "/proto/user.proto");
@@ -20,6 +21,8 @@ const proto = loadPackageDefinition(protoDefinition) as any;
 const userProto = proto.user;
 
 const server = new Server();
+
+server.addService(proto.user.UserService.service, userHandlers);
 
 const PORT = "0.0.0.0:8081";
 
