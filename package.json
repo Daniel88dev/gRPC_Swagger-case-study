@@ -10,6 +10,24 @@
     "mock:server": "json-server --watch db/db.json --port 8000"
   },
   "devDependencies": {
-    "json-server": "^1.0.0-beta.3"
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.14.0",
+    "json-server": "^1.0.0-beta.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.2",
+    "@grpc/proto-loader": "^0.7.13",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "tsoa": "^6.6.0",
+    "uuid": "^11.1.0"
   }
 }
