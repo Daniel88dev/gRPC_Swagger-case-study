@@ -18,7 +18,7 @@ const protoDefinition = loadSync(PROTO_PATH, {
 });
 
 const proto = loadPackageDefinition(protoDefinition) as any;
-const userProto = proto.user;
+export const userProto = proto.user;
 
 const server = new Server();
 
