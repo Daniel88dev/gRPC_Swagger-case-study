@@ -1,10 +1,11 @@
 import {
   createUser,
-  getAllUsers,
   getUserById,
   getUsers,
+  loginUser,
 } from "../services/userServices";
 import { tryCatch } from "../util/try-catch";
+import * as grpc from "@grpc/grpc-js";
 
 export const userHandlers = {
   GetUsers: async (call: any, callback: any) => {
@@ -62,6 +63,26 @@ export const userHandlers = {
       console.log(user);
 
       callback(null, { ...user });
+    } catch (err: any) {
+      callback(new Error(err.message));
+    }
+  },
+  LoginUser: async (call: any, callback: any) => {
+    try {
+      const { email, password } = call.request;
+
+      if (!email || !password) {
+        callback(new Error("Invalid email or password"));
+        return;
+      }
+
+      const token = await loginUser(email, password);
+
+      if (!token) {
+        callback(new Error("Invalid email or password"));
+        return;
+      }
+      callback(null, { token });
     } catch (err: any) {
       callback(new Error(err.message));
     }

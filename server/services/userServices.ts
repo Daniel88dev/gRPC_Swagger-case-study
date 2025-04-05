@@ -3,6 +3,7 @@ import { User } from "../models/User";
 import { userProto } from "../server";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
+import jwt from "jsonwebtoken";
 
 const db = "http://localhost:8000/users";
 
@@ -80,4 +81,31 @@ export const getUserById = async (id: string) => {
   };
 
   return formatedUser;
+};
+
+export const loginUser = async (email: string, password: string) => {
+  const result: AxiosResponse<User[]> = await axios(`${db}/?email=${email}`);
+
+  if (result.status !== 200) {
+    throw new Error("No user found for searched email");
+  }
+
+  const user = result.data[0];
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    throw new Error("Invalid credentials");
+  }
+  // Generate token in the required format
+  const token = jwt.sign(
+    {
+      id: user.id,
+      iat: Math.floor(Date.now() / 1000),
+      exp: Math.floor(Date.now() / 1000) + 3600,
+    },
+    "tajny_klic",
+    { algorithm: "HS256" }
+  );
+
+  return token;
 };
