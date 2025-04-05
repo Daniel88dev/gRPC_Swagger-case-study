@@ -1,4 +1,3 @@
-// Great function introduced by Theo.
 // Types for the result object with discriminated union
 type Success<T> = {
   data: T;

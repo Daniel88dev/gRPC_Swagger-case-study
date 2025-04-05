@@ -7,8 +7,14 @@ import {
 import { tryCatch } from "../util/try-catch";
 import { ServerUnaryCall, sendUnaryData } from "@grpc/grpc-js";
 import {
+  CreateUserRequest,
+  CreateUserResponse,
+  GetUserByIdRequest,
+  GetUserByIdResponse,
   GetUsersRequest,
   GetUsersResponse,
+  LoginUserRequest,
+  LoginUserResponse,
 } from "../generated/generated-proto";
 
 export const userHandlers = {
@@ -33,17 +39,29 @@ export const userHandlers = {
         return;
       }
 
-      const users = await getUsers(offset, limit);
+      const { data: users, error: userError } = await tryCatch(
+        getUsers(offset, limit)
+      );
+
+      if (userError) {
+        callback(new Error(userError.message));
+        return;
+      }
+
       callback(null, { users });
     } catch (err: any) {
       callback(new Error(err.message));
     }
   },
-  CreateUser: async (call: any, callback: any) => {
+  CreateUser: async (
+    call: ServerUnaryCall<CreateUserRequest, CreateUserResponse>,
+    callback: sendUnaryData<CreateUserResponse>
+  ) => {
     try {
       const { data: id, error } = await tryCatch(createUser(call.request));
       if (error) {
         callback(new Error(error.message));
+        return;
       }
 
       callback(null, { id });
@@ -51,7 +69,10 @@ export const userHandlers = {
       callback(new Error(err.message));
     }
   },
-  GetUserById: async (call: any, callback: any) => {
+  GetUserById: async (
+    call: ServerUnaryCall<GetUserByIdRequest, GetUserByIdResponse>,
+    callback: sendUnaryData<GetUserByIdResponse>
+  ) => {
     try {
       const { id } = call.request;
 
@@ -60,9 +81,9 @@ export const userHandlers = {
         return;
       }
 
-      const user = await getUserById(id);
+      const { data: user, error: userError } = await tryCatch(getUserById(id));
 
-      if (!user) {
+      if (userError) {
         callback(new Error("User not found"));
         return;
       }
@@ -74,7 +95,10 @@ export const userHandlers = {
       callback(new Error(err.message));
     }
   },
-  LoginUser: async (call: any, callback: any) => {
+  LoginUser: async (
+    call: ServerUnaryCall<LoginUserRequest, LoginUserResponse>,
+    callback: sendUnaryData<LoginUserResponse>
+  ) => {
     try {
       const { email, password } = call.request;
 
@@ -83,7 +107,14 @@ export const userHandlers = {
         return;
       }
 
-      const token = await loginUser(email, password);
+      const { data: token, error: tokenError } = await tryCatch(
+        loginUser(email, password)
+      );
+
+      if (tokenError) {
+        callback(new Error(tokenError.message));
+        return;
+      }
 
       if (!token) {
         callback(new Error("Invalid email or password"));
