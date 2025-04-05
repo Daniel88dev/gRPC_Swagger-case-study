@@ -66,16 +66,18 @@ export const createUser = async (data: Omit<User, "id">) => {
 };
 
 export const getUserById = async (id: string) => {
-  const user: AxiosResponse<User> = await axios(`${db}/:${id}`);
+  const user: AxiosResponse<User> = await axios(`${db}/${id}`);
   if (user.status !== 200) {
     throw new Error("No user found for searched id");
   }
 
-  return {
+  const formatedUser = {
     id: user.data.id,
     firstName: user.data.firstName,
     lastName: user.data.lastName,
     email: user.data.email,
     company: user.data.company,
   };
+
+  return formatedUser;
 };

@@ -1,4 +1,9 @@
-import { createUser, getAllUsers, getUsers } from "../services/userServices";
+import {
+  createUser,
+  getAllUsers,
+  getUserById,
+  getUsers,
+} from "../services/userServices";
 import { tryCatch } from "../util/try-catch";
 
 export const userHandlers = {
@@ -34,6 +39,29 @@ export const userHandlers = {
       }
 
       callback(null, { id });
+    } catch (err: any) {
+      callback(new Error(err.message));
+    }
+  },
+  GetUserById: async (call: any, callback: any) => {
+    try {
+      const { id } = call.request;
+
+      if (!id) {
+        callback(new Error("Invalid id"));
+        return;
+      }
+
+      const user = await getUserById(id);
+
+      if (!user) {
+        callback(new Error("User not found"));
+        return;
+      }
+
+      console.log(user);
+
+      callback(null, { ...user });
     } catch (err: any) {
       callback(new Error(err.message));
     }
