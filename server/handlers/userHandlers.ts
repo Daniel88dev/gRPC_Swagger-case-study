@@ -5,10 +5,17 @@ import {
   loginUser,
 } from "../services/userServices";
 import { tryCatch } from "../util/try-catch";
-import * as grpc from "@grpc/grpc-js";
+import { ServerUnaryCall, sendUnaryData } from "@grpc/grpc-js";
+import {
+  GetUsersRequest,
+  GetUsersResponse,
+} from "../generated/generated-proto";
 
 export const userHandlers = {
-  GetUsers: async (call: any, callback: any) => {
+  GetUsers: async (
+    call: ServerUnaryCall<GetUsersRequest, GetUsersResponse>,
+    callback: sendUnaryData<GetUsersResponse>
+  ) => {
     try {
       const { offset, limit } = call.request;
 

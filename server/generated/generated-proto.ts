@@ -6,7 +6,10 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import { type handleUnaryCall, type UntypedServiceImplementation } from "@grpc/grpc-js";
+import {
+  type handleUnaryCall,
+  type UntypedServiceImplementation,
+} from "@grpc/grpc-js";
 
 export const protobufPackage = "user";
 
@@ -40,10 +43,10 @@ export interface GetUsersRequest {
 }
 
 export interface GetUsersResponse {
-  users: User[];
+  users: GeneratedProto[];
 }
 
-export interface User {
+export interface GeneratedProto {
   id: string;
   email: string;
 }
@@ -62,7 +65,10 @@ function createBaseCreateUserRequest(): CreateUserRequest {
 }
 
 export const CreateUserRequest: MessageFns<CreateUserRequest> = {
-  encode(message: CreateUserRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: CreateUserRequest,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     if (message.firstName !== "") {
       writer.uint32(10).string(message.firstName);
     }
@@ -82,7 +88,8 @@ export const CreateUserRequest: MessageFns<CreateUserRequest> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): CreateUserRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateUserRequest();
     while (reader.pos < end) {
@@ -139,11 +146,17 @@ export const CreateUserRequest: MessageFns<CreateUserRequest> = {
 
   fromJSON(object: any): CreateUserRequest {
     return {
-      firstName: isSet(object.firstName) ? globalThis.String(object.firstName) : "",
-      lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
+      firstName: isSet(object.firstName)
+        ? globalThis.String(object.firstName)
+        : "",
+      lastName: isSet(object.lastName)
+        ? globalThis.String(object.lastName)
+        : "",
       company: isSet(object.company) ? globalThis.String(object.company) : "",
       email: isSet(object.email) ? globalThis.String(object.email) : "",
-      password: isSet(object.password) ? globalThis.String(object.password) : "",
+      password: isSet(object.password)
+        ? globalThis.String(object.password)
+        : "",
     };
   },
 
@@ -167,10 +180,14 @@ export const CreateUserRequest: MessageFns<CreateUserRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateUserRequest>, I>>(base?: I): CreateUserRequest {
+  create<I extends Exact<DeepPartial<CreateUserRequest>, I>>(
+    base?: I
+  ): CreateUserRequest {
     return CreateUserRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateUserRequest>, I>>(object: I): CreateUserRequest {
+  fromPartial<I extends Exact<DeepPartial<CreateUserRequest>, I>>(
+    object: I
+  ): CreateUserRequest {
     const message = createBaseCreateUserRequest();
     message.firstName = object.firstName ?? "";
     message.lastName = object.lastName ?? "";
@@ -186,15 +203,22 @@ function createBaseCreateUserResponse(): CreateUserResponse {
 }
 
 export const CreateUserResponse: MessageFns<CreateUserResponse> = {
-  encode(message: CreateUserResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: CreateUserResponse,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CreateUserResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): CreateUserResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateUserResponse();
     while (reader.pos < end) {
@@ -229,10 +253,14 @@ export const CreateUserResponse: MessageFns<CreateUserResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateUserResponse>, I>>(base?: I): CreateUserResponse {
+  create<I extends Exact<DeepPartial<CreateUserResponse>, I>>(
+    base?: I
+  ): CreateUserResponse {
     return CreateUserResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateUserResponse>, I>>(object: I): CreateUserResponse {
+  fromPartial<I extends Exact<DeepPartial<CreateUserResponse>, I>>(
+    object: I
+  ): CreateUserResponse {
     const message = createBaseCreateUserResponse();
     message.id = object.id ?? "";
     return message;
@@ -244,15 +272,22 @@ function createBaseGetUserByIdRequest(): GetUserByIdRequest {
 }
 
 export const GetUserByIdRequest: MessageFns<GetUserByIdRequest> = {
-  encode(message: GetUserByIdRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: GetUserByIdRequest,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): GetUserByIdRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): GetUserByIdRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetUserByIdRequest();
     while (reader.pos < end) {
@@ -287,10 +322,14 @@ export const GetUserByIdRequest: MessageFns<GetUserByIdRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetUserByIdRequest>, I>>(base?: I): GetUserByIdRequest {
+  create<I extends Exact<DeepPartial<GetUserByIdRequest>, I>>(
+    base?: I
+  ): GetUserByIdRequest {
     return GetUserByIdRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetUserByIdRequest>, I>>(object: I): GetUserByIdRequest {
+  fromPartial<I extends Exact<DeepPartial<GetUserByIdRequest>, I>>(
+    object: I
+  ): GetUserByIdRequest {
     const message = createBaseGetUserByIdRequest();
     message.id = object.id ?? "";
     return message;
@@ -302,7 +341,10 @@ function createBaseGetUserByIdResponse(): GetUserByIdResponse {
 }
 
 export const GetUserByIdResponse: MessageFns<GetUserByIdResponse> = {
-  encode(message: GetUserByIdResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: GetUserByIdResponse,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -321,8 +363,12 @@ export const GetUserByIdResponse: MessageFns<GetUserByIdResponse> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): GetUserByIdResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): GetUserByIdResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetUserByIdResponse();
     while (reader.pos < end) {
@@ -380,8 +426,12 @@ export const GetUserByIdResponse: MessageFns<GetUserByIdResponse> = {
   fromJSON(object: any): GetUserByIdResponse {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
-      firstName: isSet(object.firstName) ? globalThis.String(object.firstName) : "",
-      lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
+      firstName: isSet(object.firstName)
+        ? globalThis.String(object.firstName)
+        : "",
+      lastName: isSet(object.lastName)
+        ? globalThis.String(object.lastName)
+        : "",
       company: isSet(object.company) ? globalThis.String(object.company) : "",
       email: isSet(object.email) ? globalThis.String(object.email) : "",
     };
@@ -407,10 +457,14 @@ export const GetUserByIdResponse: MessageFns<GetUserByIdResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetUserByIdResponse>, I>>(base?: I): GetUserByIdResponse {
+  create<I extends Exact<DeepPartial<GetUserByIdResponse>, I>>(
+    base?: I
+  ): GetUserByIdResponse {
     return GetUserByIdResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetUserByIdResponse>, I>>(object: I): GetUserByIdResponse {
+  fromPartial<I extends Exact<DeepPartial<GetUserByIdResponse>, I>>(
+    object: I
+  ): GetUserByIdResponse {
     const message = createBaseGetUserByIdResponse();
     message.id = object.id ?? "";
     message.firstName = object.firstName ?? "";
@@ -426,7 +480,10 @@ function createBaseGetUsersRequest(): GetUsersRequest {
 }
 
 export const GetUsersRequest: MessageFns<GetUsersRequest> = {
-  encode(message: GetUsersRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: GetUsersRequest,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     if (message.offset !== 0) {
       writer.uint32(8).int32(message.offset);
     }
@@ -437,7 +494,8 @@ export const GetUsersRequest: MessageFns<GetUsersRequest> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): GetUsersRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetUsersRequest();
     while (reader.pos < end) {
@@ -486,10 +544,14 @@ export const GetUsersRequest: MessageFns<GetUsersRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetUsersRequest>, I>>(base?: I): GetUsersRequest {
+  create<I extends Exact<DeepPartial<GetUsersRequest>, I>>(
+    base?: I
+  ): GetUsersRequest {
     return GetUsersRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetUsersRequest>, I>>(object: I): GetUsersRequest {
+  fromPartial<I extends Exact<DeepPartial<GetUsersRequest>, I>>(
+    object: I
+  ): GetUsersRequest {
     const message = createBaseGetUsersRequest();
     message.offset = object.offset ?? 0;
     message.limit = object.limit ?? 0;
@@ -502,7 +564,10 @@ function createBaseGetUsersResponse(): GetUsersResponse {
 }
 
 export const GetUsersResponse: MessageFns<GetUsersResponse> = {
-  encode(message: GetUsersResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: GetUsersResponse,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     for (const v of message.users) {
       User.encode(v!, writer.uint32(10).fork()).join();
     }
@@ -510,7 +575,8 @@ export const GetUsersResponse: MessageFns<GetUsersResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): GetUsersResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetUsersResponse();
     while (reader.pos < end) {
@@ -534,7 +600,11 @@ export const GetUsersResponse: MessageFns<GetUsersResponse> = {
   },
 
   fromJSON(object: any): GetUsersResponse {
-    return { users: globalThis.Array.isArray(object?.users) ? object.users.map((e: any) => User.fromJSON(e)) : [] };
+    return {
+      users: globalThis.Array.isArray(object?.users)
+        ? object.users.map((e: any) => User.fromJSON(e))
+        : [],
+    };
   },
 
   toJSON(message: GetUsersResponse): unknown {
@@ -545,22 +615,29 @@ export const GetUsersResponse: MessageFns<GetUsersResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetUsersResponse>, I>>(base?: I): GetUsersResponse {
+  create<I extends Exact<DeepPartial<GetUsersResponse>, I>>(
+    base?: I
+  ): GetUsersResponse {
     return GetUsersResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetUsersResponse>, I>>(object: I): GetUsersResponse {
+  fromPartial<I extends Exact<DeepPartial<GetUsersResponse>, I>>(
+    object: I
+  ): GetUsersResponse {
     const message = createBaseGetUsersResponse();
     message.users = object.users?.map((e) => User.fromPartial(e)) || [];
     return message;
   },
 };
 
-function createBaseUser(): User {
+function createBaseUser(): GeneratedProto {
   return { id: "", email: "" };
 }
 
-export const User: MessageFns<User> = {
-  encode(message: User, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const User: MessageFns<GeneratedProto> = {
+  encode(
+    message: GeneratedProto,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -570,8 +647,9 @@ export const User: MessageFns<User> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): User {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GeneratedProto {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUser();
     while (reader.pos < end) {
@@ -602,14 +680,14 @@ export const User: MessageFns<User> = {
     return message;
   },
 
-  fromJSON(object: any): User {
+  fromJSON(object: any): GeneratedProto {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
       email: isSet(object.email) ? globalThis.String(object.email) : "",
     };
   },
 
-  toJSON(message: User): unknown {
+  toJSON(message: GeneratedProto): unknown {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
@@ -620,10 +698,14 @@ export const User: MessageFns<User> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<User>, I>>(base?: I): User {
+  create<I extends Exact<DeepPartial<GeneratedProto>, I>>(
+    base?: I
+  ): GeneratedProto {
     return User.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<User>, I>>(object: I): User {
+  fromPartial<I extends Exact<DeepPartial<GeneratedProto>, I>>(
+    object: I
+  ): GeneratedProto {
     const message = createBaseUser();
     message.id = object.id ?? "";
     message.email = object.email ?? "";
@@ -636,7 +718,10 @@ function createBaseLoginUserRequest(): LoginUserRequest {
 }
 
 export const LoginUserRequest: MessageFns<LoginUserRequest> = {
-  encode(message: LoginUserRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: LoginUserRequest,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     if (message.email !== "") {
       writer.uint32(10).string(message.email);
     }
@@ -647,7 +732,8 @@ export const LoginUserRequest: MessageFns<LoginUserRequest> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): LoginUserRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseLoginUserRequest();
     while (reader.pos < end) {
@@ -681,7 +767,9 @@ export const LoginUserRequest: MessageFns<LoginUserRequest> = {
   fromJSON(object: any): LoginUserRequest {
     return {
       email: isSet(object.email) ? globalThis.String(object.email) : "",
-      password: isSet(object.password) ? globalThis.String(object.password) : "",
+      password: isSet(object.password)
+        ? globalThis.String(object.password)
+        : "",
     };
   },
 
@@ -696,10 +784,14 @@ export const LoginUserRequest: MessageFns<LoginUserRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<LoginUserRequest>, I>>(base?: I): LoginUserRequest {
+  create<I extends Exact<DeepPartial<LoginUserRequest>, I>>(
+    base?: I
+  ): LoginUserRequest {
     return LoginUserRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<LoginUserRequest>, I>>(object: I): LoginUserRequest {
+  fromPartial<I extends Exact<DeepPartial<LoginUserRequest>, I>>(
+    object: I
+  ): LoginUserRequest {
     const message = createBaseLoginUserRequest();
     message.email = object.email ?? "";
     message.password = object.password ?? "";
@@ -712,7 +804,10 @@ function createBaseLoginUserResponse(): LoginUserResponse {
 }
 
 export const LoginUserResponse: MessageFns<LoginUserResponse> = {
-  encode(message: LoginUserResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: LoginUserResponse,
+    writer: BinaryWriter = new BinaryWriter()
+  ): BinaryWriter {
     if (message.token !== "") {
       writer.uint32(10).string(message.token);
     }
@@ -720,7 +815,8 @@ export const LoginUserResponse: MessageFns<LoginUserResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): LoginUserResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseLoginUserResponse();
     while (reader.pos < end) {
@@ -744,7 +840,9 @@ export const LoginUserResponse: MessageFns<LoginUserResponse> = {
   },
 
   fromJSON(object: any): LoginUserResponse {
-    return { token: isSet(object.token) ? globalThis.String(object.token) : "" };
+    return {
+      token: isSet(object.token) ? globalThis.String(object.token) : "",
+    };
   },
 
   toJSON(message: LoginUserResponse): unknown {
@@ -755,10 +853,14 @@ export const LoginUserResponse: MessageFns<LoginUserResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<LoginUserResponse>, I>>(base?: I): LoginUserResponse {
+  create<I extends Exact<DeepPartial<LoginUserResponse>, I>>(
+    base?: I
+  ): LoginUserResponse {
     return LoginUserResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<LoginUserResponse>, I>>(object: I): LoginUserResponse {
+  fromPartial<I extends Exact<DeepPartial<LoginUserResponse>, I>>(
+    object: I
+  ): LoginUserResponse {
     const message = createBaseLoginUserResponse();
     message.token = object.token ?? "";
     return message;
@@ -771,36 +873,44 @@ export const UserServiceService = {
     path: "/user.UserService/CreateUser",
     requestStream: false,
     responseStream: false,
-    requestSerialize: (value: CreateUserRequest) => Buffer.from(CreateUserRequest.encode(value).finish()),
+    requestSerialize: (value: CreateUserRequest) =>
+      Buffer.from(CreateUserRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => CreateUserRequest.decode(value),
-    responseSerialize: (value: CreateUserResponse) => Buffer.from(CreateUserResponse.encode(value).finish()),
+    responseSerialize: (value: CreateUserResponse) =>
+      Buffer.from(CreateUserResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => CreateUserResponse.decode(value),
   },
   getUserById: {
     path: "/user.UserService/GetUserById",
     requestStream: false,
     responseStream: false,
-    requestSerialize: (value: GetUserByIdRequest) => Buffer.from(GetUserByIdRequest.encode(value).finish()),
+    requestSerialize: (value: GetUserByIdRequest) =>
+      Buffer.from(GetUserByIdRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => GetUserByIdRequest.decode(value),
-    responseSerialize: (value: GetUserByIdResponse) => Buffer.from(GetUserByIdResponse.encode(value).finish()),
+    responseSerialize: (value: GetUserByIdResponse) =>
+      Buffer.from(GetUserByIdResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => GetUserByIdResponse.decode(value),
   },
   getUsers: {
     path: "/user.UserService/GetUsers",
     requestStream: false,
     responseStream: false,
-    requestSerialize: (value: GetUsersRequest) => Buffer.from(GetUsersRequest.encode(value).finish()),
+    requestSerialize: (value: GetUsersRequest) =>
+      Buffer.from(GetUsersRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => GetUsersRequest.decode(value),
-    responseSerialize: (value: GetUsersResponse) => Buffer.from(GetUsersResponse.encode(value).finish()),
+    responseSerialize: (value: GetUsersResponse) =>
+      Buffer.from(GetUsersResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => GetUsersResponse.decode(value),
   },
   loginUser: {
     path: "/user.UserService/LoginUser",
     requestStream: false,
     responseStream: false,
-    requestSerialize: (value: LoginUserRequest) => Buffer.from(LoginUserRequest.encode(value).finish()),
+    requestSerialize: (value: LoginUserRequest) =>
+      Buffer.from(LoginUserRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => LoginUserRequest.decode(value),
-    responseSerialize: (value: LoginUserResponse) => Buffer.from(LoginUserResponse.encode(value).finish()),
+    responseSerialize: (value: LoginUserResponse) =>
+      Buffer.from(LoginUserResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => LoginUserResponse.decode(value),
   },
 } as const;
@@ -812,17 +922,31 @@ export interface UserServiceServer extends UntypedServiceImplementation {
   loginUser: handleUnaryCall<LoginUserRequest, LoginUserResponse>;
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin =
+  | Date
+  | Function
+  | Uint8Array
+  | string
+  | number
+  | boolean
+  | undefined;
 
-export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
-  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin
+  ? T
+  : T extends globalThis.Array<infer U>
+  ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U>
+  ? ReadonlyArray<DeepPartial<U>>
+  : T extends {}
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
+export type Exact<P, I extends P> = P extends Builtin
+  ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & {
+      [K in Exclude<keyof I, KeysOfUnion<P>>]: never;
+    };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;
