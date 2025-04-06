@@ -17,6 +17,24 @@ app.get("/users", (req, res) => {
   });
 });
 
+app.get("/users/:offset/:limit", (req, res) => {
+  const { offset, limit } = req.params;
+  userClient.GetUsers(
+    { offset: parseInt(offset), limit: parseInt(limit) },
+    (err: any, response: any) => {
+      if (err) return res.status(500).render("error", { message: err.message });
+      res.render("users", { users: response.users });
+    }
+  );
+});
+
+app.get("/user/:id", (req, res) => {
+  userClient.GetUserById({ id: req.params.id }, (err: any, response: any) => {
+    if (err) return res.status(404).render("error", { message: err.message });
+    res.render("userDetail", { user: response });
+  });
+});
+
 app.get("/", (_, res) => {
   res.send(`
     <h2>gRPC Client is running</h2>
