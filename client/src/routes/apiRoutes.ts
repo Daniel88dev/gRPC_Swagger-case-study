@@ -37,13 +37,55 @@ router.get("/users/:offset/:limit", (req, res) => {
 });
 
 // POST /api/user/create - registration of user. Returns new user ID
+/**
+ * @openapi
+ * /api/user/create:
+ *   post:
+ *      tags:
+ *        - User
+ *      summary: Register a user
+ *      requestBody:
+ *        description: User details for registration
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              required:
+ *                - firstName
+ *                - lastName
+ *                - company
+ *                - email
+ *                - password
+ *              properties:
+ *                firstName:
+ *                  type: string
+ *                  default: Daniel
+ *                lastName:
+ *                  type: string
+ *                  default: Hrynusiw
+ *                company:
+ *                  type: string
+ *                  default: Hyundai
+ *                email:
+ *                  type: string
+ *                  default: daniel@hrynusiw.cz
+ *                password:
+ *                  type: string
+ *                  default: heslo123
+ *      responses:
+ *        201:
+ *          description: Returns user generated ID
+ *        500:
+ *          description: Returns error with description
+ */
 router.post("/user/create", (req, res) => {
   const { firstName, lastName, company, email, password } = req.body;
   userClient.CreateUser(
     { firstName, lastName, company, email, password },
     (err, response) => {
       if (err) return res.status(500).json({ error: err.message });
-      res.json(response);
+      res.status(201).json(response);
     }
   );
 });
