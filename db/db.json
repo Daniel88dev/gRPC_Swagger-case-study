@@ -1,140 +1,108 @@
 {
   "users": [
     {
-      "id": "1",
-      "firstName": "Emma",
-      "lastName": "Johnson",
-      "company": "TechNova",
-      "email": "emma.johnson@technova.com",
-      "password": "p@ssw0rd1"
+      "id": "F67NT",
+      "firstName": "Petr",
+      "lastName": "Novák",
+      "company": "Hyundai",
+      "email": "daniel1@example.com",
+      "password": "$2b$10$D/KLw/yo5r7vM2pxxq7K5O5POL8Lx/J2egH2VriAKpslxvMDr4Qe6"
     },
     {
-      "id": "2",
+      "id": "A4N94",
+      "firstName": "Jana",
+      "lastName": "Nováková",
+      "company": "Škoda",
+      "email": "jana@example.com",
+      "password": "$2b$10$vyfQPF/nflQmAcw7jCjyc.nag4qK4SHl8UB9atI79nEgjLy93Ef2a"
+    },
+    {
+      "id": "APQKQ",
       "firstName": "Liam",
       "lastName": "Brown",
       "company": "CodeCraft",
       "email": "liam.brown@codecraft.io",
-      "password": "code123!"
+      "password": "$2b$10$nfVOfBw.S/MI73rUWzVlOeItBzoNqVQI4ufyRTy9WMZRyWVuXqLR6"
     },
     {
-      "id": "3",
+      "id": "8QPH9",
       "firstName": "Olivia",
       "lastName": "Davis",
       "company": "InnoSoft",
       "email": "olivia.davis@innosoft.org",
-      "password": "welcome2024"
+      "password": "$2b$10$RlRrA/DoTyTViMz02KZujOzTpi6G/KqmiwOPL4sp1csEwPjJhjKEm"
     },
     {
-      "id": "4",
+      "id": "IY8MN",
       "firstName": "Noah",
       "lastName": "Miller",
       "company": "WebSolutions",
       "email": "noah.miller@websolutions.dev",
-      "password": "secure@321"
+      "password": "$2b$10$fFyNrwPNCudV7604gBPO2.iULj4mribtxtLKM7hnS2gJPcPHSGUB6"
     },
     {
-      "id": "5",
+      "id": "DJ980",
       "firstName": "Ava",
       "lastName": "Wilson",
       "company": "AppGenix",
       "email": "ava.wilson@appgenix.com",
-      "password": "avapass2023"
+      "password": "$2b$10$3BXbGY01YNWaDSuX0XdT4esXLxlcXN85skUD6c7RegAPJf1IrCuVO"
     },
     {
-      "id": "6",
+      "id": "YJL27",
       "firstName": "Ethan",
       "lastName": "Taylor",
       "company": "BlueOcean",
       "email": "ethan.taylor@blueocean.co",
-      "password": "ocean$view"
+      "password": "$2b$10$FgSIllj8SDUGWvUBFg.06uums83Us8jMM4hvCkY80mE7cEO9.ekjK"
     },
     {
-      "id": "7",
+      "id": "OXY9L",
       "firstName": "Sophia",
       "lastName": "Anderson",
       "company": "NextTech",
       "email": "sophia.anderson@nexttech.ai",
-      "password": "next@456"
+      "password": "$2b$10$/aUrOAY9kyi68NKNv8HXBe73oUVnUTsMjOAuZmCn49aFy5Foq8IrS"
     },
     {
-      "id": "8",
+      "id": "56AQE",
       "firstName": "Mason",
       "lastName": "Thomas",
       "company": "DevStars",
       "email": "mason.thomas@devstars.com",
-      "password": "masonPass!"
+      "password": "$2b$10$OS3UMr6hkPQy23PLa4yWfOXyEnkPrYrFKpexQJ9RTwBmiakjivF76"
     },
     {
-      "id": "9",
+      "id": "7Z1Q4",
       "firstName": "Isabella",
       "lastName": "Jackson",
       "company": "CloudCore",
       "email": "isabella.jackson@cloudcore.net",
-      "password": "cloudyDay7"
+      "password": "$2b$10$bDZLp4Yjvre0c6.Crres1ePw5VPoR8MIcoG3BOvL2h/OzycITekWW"
     },
     {
-      "id": "10",
+      "id": "UBYL3",
       "firstName": "Logan",
       "lastName": "White",
       "company": "CyberWare",
       "email": "logan.white@cyberware.tech",
-      "password": "cyber2025"
+      "password": "$2b$10$HYafdqZQ23xGCWkJrOohKucqU.JxudPXGfaGJUi6HoTAQqOEjWO92"
     },
     {
-      "id": "11",
+      "id": "A543M",
       "firstName": "Mia",
       "lastName": "Harris",
       "company": "SmartLoop",
       "email": "mia.harris@smartloop.io",
-      "password": "loop!321"
+      "password": "$2b$10$xqGBT3jgUbUZPbecE5.rEuTcrPWmYjebJKR9DdBedI9ydXBcP175K"
     },
     {
-      "id": "12",
+      "id": "0C9S2",
       "firstName": "James",
       "lastName": "Martin",
       "company": "BrightApps",
       "email": "james.martin@brightapps.org",
-      "password": "bright*pass"
-    },
-    {
-      "id": "13",
-      "firstName": "Amelia",
-      "lastName": "Thompson",
-      "company": "PixelEdge",
-      "email": "amelia.thompson@pixeledge.dev",
-      "password": "pixelPass99"
-    },
-    {
-      "id": "14",
-      "firstName": "Elijah",
-      "lastName": "Garcia",
-      "company": "QuantumX",
-      "email": "elijah.garcia@quantumx.ai",
-      "password": "quantumLeap!"
-    },
-    {
-      "id": "15",
-      "firstName": "Charlotte",
-      "lastName": "Martinez",
-      "company": "NovaBuild",
-      "email": "charlotte.martinez@novabuild.com",
-      "password": "buildIt2024"
-    },
-    {
-      "id": "5d7a895a-95ca-4bf1-96c2-a6a228f81fb3",
-      "firstName": "aliquip Excepteur eu nulla anim",
-      "lastName": "in officia est labore",
-      "company": "ut ullamco non proident",
-      "email": "tempor occaecat",
-      "password": "$2b$10$ZIq4w7qbtiYATsJmwhwcVekvno9TEADYCXyEJx25EovX1cmhdz/Ca"
-    },
-    {
-      "id": "4c49921e-c535-4f4f-ad99-48dd547393a2",
-      "firstName": "magna cillum pariatur aliquip",
-      "lastName": "deserunt ad",
-      "company": "incididunt",
-      "email": "labore",
-      "password": "$2b$10$Ty7xccx7az544nsK5GfROOIcE3Fjr4MF9xUmJ5FcboMM0BvO2okyy"
+      "password": "$2b$10$lNJ0V6w6NGPclQ8.ER4n8umPpX49j8FzrrqO0A7Atrt.k3TJ16qCK"
     }
   ]
 }

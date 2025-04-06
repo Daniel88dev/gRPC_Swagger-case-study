@@ -23,7 +23,18 @@ export async function runSequence() {
 
   for (const user of usersInput) {
     await new Promise<void>((resolve) => {
-      userClient.createUser;
+      userClient.CreateUser(user, (err, response) => {
+        if (err) {
+          console.error("Create user error: " + err.message);
+        } else {
+          usersIds.push(response?.id!);
+        }
+        resolve();
+      });
     });
   }
+
+  console.log("Users created with following id's: ", usersIds.join(", "));
 }
+
+runSequence();

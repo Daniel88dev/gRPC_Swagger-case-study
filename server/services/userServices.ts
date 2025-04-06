@@ -1,11 +1,13 @@
 import axios, { AxiosResponse } from "axios";
 import { User } from "../models/User";
-import { userProto } from "../server";
 import bcrypt from "bcrypt";
-import { v4 as uuidv4 } from "uuid";
 import jwt from "jsonwebtoken";
 
 const db = "http://localhost:8000/users";
+
+const generateShortId = (): string => {
+  return Math.random().toString(36).substring(2, 7).toUpperCase();
+};
 
 // testing for getting all users (need to modify)
 export const getAllUsers = async () => {
@@ -14,11 +16,9 @@ export const getAllUsers = async () => {
     throw new Error("Error fetching users");
   }
 
-  const userEmails: (typeof userProto.GetUsersResponse)[] = users.data.map(
-    (user) => {
-      return { id: user.id, email: user.email };
-    }
-  );
+  const userEmails: { id: string; email: string }[] = users.data.map((user) => {
+    return { id: user.id, email: user.email };
+  });
 
   return userEmails;
 };
@@ -55,7 +55,7 @@ export const createUser = async (data: Omit<User, "id">) => {
   const newUser: User = {
     ...data,
     password: hashedPassword,
-    id: uuidv4(),
+    id: generateShortId(),
   };
 
   const response = await axios.post(db, newUser);

@@ -3,7 +3,7 @@ import { credentials, loadPackageDefinition } from "@grpc/grpc-js";
 import { loadSync } from "@grpc/proto-loader";
 import { ProtoGrpcType } from "./proto/user";
 
-const PROTO_PATH = path.join(__dirname, "../server/proto/server.proto");
+const PROTO_PATH = path.join(__dirname, "./proto/user.proto");
 
 const packageDefinition = loadSync(PROTO_PATH, {
   keepCase: true,
