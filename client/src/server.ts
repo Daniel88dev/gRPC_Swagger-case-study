@@ -14,6 +14,7 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "../views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 // handle routes
 app.use("/users", usersRoutes);
@@ -23,15 +24,7 @@ app.use("/api", apiRoutes);
 
 // GET / - display menu page
 app.get("/", (_, res) => {
-  res.send(`
-    <h2>gRPC Client is running</h2>
-    <ul>
-      <li><a href="/user/create">User Registration</a></li>
-      <li><a href="/users">Load users</a></li>
-      <li><a href="/login">Login user</a></li>
-      <li><a href="/docs">REST API documentation</a> </li>
-    </ul>
-  `);
+  res.render("home");
 });
 
 app.listen(PORT, async () => {

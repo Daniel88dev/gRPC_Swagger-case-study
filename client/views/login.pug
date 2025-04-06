@@ -1,14 +1,15 @@
 extends layout
 
 block content
-    h1 Login
-    if error
-        p(style="color:red") #{error}
-    form(action="/login", method="POST")
-        label(for="email") Email:
-        input(id="email", type="email", name="email", required)
-        br
-        label(for="password") Password:
-        input(id="password", type="password", name="password", required)
-        br
-        button(type="submit") Log in
+    .container
+        h1 Login
+        if error
+            p(style="color:red") #{error}
+        form(action="/login", method="POST")
+            label(for="email") Email:
+            input(id="email", type="email", name="email", required)
+            br
+            label(for="password") Password:
+            input(id="password", type="password", name="password", required)
+            br
+            button(type="submit") Log in

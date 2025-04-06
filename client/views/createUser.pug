@@ -1,23 +1,24 @@
 extends layout
 
 block content
-  h1 Create User
-  if error
-    p(style="color:red") #{error}
-  form(action="/user/create", method="POST")
-    label First name:
-    input(type="text", name="firstName", required)
-    br
-    label Last name:
-    input(type="text", name="lastName", required)
-    br
-    label Company:
-    input(type="text", name="company", required)
-    br
-    label Email:
-    input(type="email", name="email", required)
-    br
-    label Password:
-    input(type="password", name="password", required)
-    br
-    button(type="submit") Register
+  .container
+    h1 Create User
+    if error
+      p(style="color:red") #{error}
+    form(action="/user/create", method="POST")
+      label First name:
+      input(type="text", name="firstName", required)
+      br
+      label Last name:
+      input(type="text", name="lastName", required)
+      br
+      label Company:
+      input(type="text", name="company", required)
+      br
+      label Email:
+      input(type="email", name="email", required)
+      br
+      label Password:
+      input(type="password", name="password", required)
+      br
+      button(type="submit") Register

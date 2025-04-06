@@ -2,5 +2,22 @@ doctype html
 html
     head
         title gRPC Client
+        link(rel='stylesheet', href='/styles.css')
     body
-        block content
+        header.navbar
+            .nav-container
+                h2 gRPC Client page
+                nav
+                    ul
+                        li
+                            a(href='/') Home
+                        li
+                            a(href='/users') Users Table
+                        li
+                            a(href='/user/create') Create User
+                        li
+                            a(href='/login') Login User
+                        li
+                            a(href='/docs') REST API documentation
+        main
+            block content

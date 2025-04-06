@@ -1,12 +1,13 @@
 extends layout
 
 block content
-    h1 Users
-    table(border="1")
-        tr
-            th ID
-            th Email
-        each user in users
+    .container
+        h1 Users
+        table(border="1")
             tr
-                td: a(href=`/user/${user.id}`) #{user.id}
-                td #{user.email}
+                th ID
+                th Email
+            each user in users
+                tr
+                    td: a(href=`/user/${user.id}`) #{user.id}
+                    td #{user.email}
