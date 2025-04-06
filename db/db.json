@@ -111,6 +111,14 @@
       "company": "Hyundai",
       "email": "daniel.hrynusiw@gmail.com",
       "password": "$2b$10$HuyzlFz.et0Rm4I.j2Mi4.sQhQiJkUBU1eI9KJ1t/1qwqOHH3knQi"
+    },
+    {
+      "id": "BR73W",
+      "firstName": "Test",
+      "lastName": "Test",
+      "company": "Test",
+      "email": "test@example.com",
+      "password": "$2b$10$hcJ0CvVLgab/tR3DjcLKaOZelQJQd4lBovrBvSQU4IG30mLPT2xgu"
     }
   ]
 }

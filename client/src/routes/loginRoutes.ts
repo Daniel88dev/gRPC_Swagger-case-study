@@ -12,9 +12,9 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const { email, password } = req.body;
 
-  userClient.LoginUser({ email, password }, (err: any, response: any) => {
+  userClient.LoginUser({ email, password }, (err, response) => {
     if (err) return res.render("login", { error: err.message });
-    res.render("loginResult", { token: response.token });
+    res.render("loginResult", { token: response?.token });
   });
 });
 
