@@ -4,6 +4,7 @@ import userRoutes from "./routes/userRoutes";
 import loginRoutes from "./routes/loginRoutes";
 import usersRoutes from "./routes/usersRoutes";
 import apiRoutes from "./routes/apiRoutes";
+import swaggerDocs from "./utils/swagger";
 //import { runSequence } from "./initial";
 
 //middleware
@@ -32,8 +33,10 @@ app.get("/", (_, res) => {
   `);
 });
 
-app.listen(PORT, () => {
-  //runSequence();
+app.listen(PORT, async () => {
+  //await runSequence();
+
+  swaggerDocs(app, PORT);
 
   console.log(`Client server running on http://localhost:${PORT}`);
 });

@@ -4,6 +4,19 @@ import { userClient } from "../grpcClient";
 const router = Router();
 
 // GET /api/users - returns Array of first 5 user ID's and email's
+/**
+ * @openapi
+ * /api/users:
+ *  get:
+ *      tag:
+ *      - Registered user Array
+ *      description: Responds with Array of user's ID, and email
+ *      responses:
+ *        200:
+ *          description: Returns first 5 users alphabetically ordered
+ *        500:
+ *          description: Returns error with description
+ */
 router.get("/users", (req, res) => {
   userClient.GetUsers({ offset: 1, limit: 5 }, (err, response) => {
     if (err) return res.status(500).json({ error: err.message });
