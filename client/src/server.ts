@@ -10,6 +10,7 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "../views"));
 app.use(express.urlencoded({ extended: true }));
 
+// GET /users - display users table for first 5 users in email alphabetical order
 app.get("/users", (req, res) => {
   userClient.GetUsers({ offset: 1, limit: 5 }, (err: any, response: any) => {
     if (err) return res.status(500).render("error", { message: err.message });
@@ -17,6 +18,7 @@ app.get("/users", (req, res) => {
   });
 });
 
+// GET /users/:offset/:limit - display users table with offset and limit parameters
 app.get("/users/:offset/:limit", (req, res) => {
   const { offset, limit } = req.params;
   userClient.GetUsers(
@@ -28,6 +30,7 @@ app.get("/users/:offset/:limit", (req, res) => {
   );
 });
 
+// GET /user/:id - display user details
 app.get("/user/:id", (req, res) => {
   userClient.GetUserById({ id: req.params.id }, (err: any, response: any) => {
     if (err) return res.status(404).render("error", { message: err.message });
@@ -35,11 +38,12 @@ app.get("/user/:id", (req, res) => {
   });
 });
 
+// GET /login - display login form
 app.get("/login", (req, res) => {
   res.render("login");
 });
 
-// POST /login - zpracuje přihlášení
+// POST /login - login post request
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -49,12 +53,12 @@ app.post("/login", (req, res) => {
   });
 });
 
-// GET /create-user - zobrazí formulář
+// GET /create-user - display registration form
 app.get("/create-user", (req, res) => {
   res.render("createUser");
 });
 
-// POST /create-user - zpracuje registraci
+// POST /create-user - registration post request
 app.post("/create-user", (req, res) => {
   const { firstName, lastName, company, email, password } = req.body;
 
@@ -67,13 +71,14 @@ app.post("/create-user", (req, res) => {
   );
 });
 
+// GET / - display menu page
 app.get("/", (_, res) => {
   res.send(`
     <h2>gRPC Client is running</h2>
     <ul>
-      <li><a href="/status">Status</a></li>
+      <li><a href="/create-user">User Registration</a></li>
       <li><a href="/users">Load users</a></li>
-      <li><a href="/login">Login test user</a></li>
+      <li><a href="/login">Login user</a></li>
     </ul>
   `);
 });
