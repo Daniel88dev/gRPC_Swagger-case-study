@@ -6,6 +6,7 @@ import {
 } from "@grpc/grpc-js";
 import path from "node:path";
 import { userHandlers } from "./handlers/userHandlers";
+import { ProtoGrpcType } from "./proto/user";
 
 // Load proto definition
 const PROTO_PATH = path.join(__dirname, "/proto/user.proto");
@@ -17,8 +18,9 @@ const protoDefinition = loadSync(PROTO_PATH, {
   oneofs: true,
 });
 
-const proto = loadPackageDefinition(protoDefinition) as any;
-export const userProto = proto.UserService;
+// Loading package definition.
+const proto = loadPackageDefinition(protoDefinition) as any as ProtoGrpcType;
+export const userProto = proto.user;
 
 const server = new Server();
 

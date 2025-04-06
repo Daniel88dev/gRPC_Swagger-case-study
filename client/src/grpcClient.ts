@@ -1,6 +1,7 @@
 import path from "path";
 import { credentials, loadPackageDefinition } from "@grpc/grpc-js";
 import { loadSync } from "@grpc/proto-loader";
+import { ProtoGrpcType } from "./proto/user";
 
 const PROTO_PATH = path.join(__dirname, "../server/proto/server.proto");
 
@@ -12,7 +13,9 @@ const packageDefinition = loadSync(PROTO_PATH, {
   oneofs: true,
 });
 
-const protoDescriptor = loadPackageDefinition(packageDefinition) as any;
+const protoDescriptor = loadPackageDefinition(
+  packageDefinition
+) as unknown as ProtoGrpcType;
 const userPackage = protoDescriptor.user;
 
 export const userClient = new userPackage.UserService(

@@ -6,16 +6,14 @@ import {
 } from "../services/userServices";
 import { tryCatch } from "../util/try-catch";
 import { ServerUnaryCall, sendUnaryData } from "@grpc/grpc-js";
-import {
-  CreateUserRequest,
-  CreateUserResponse,
-  GetUserByIdRequest,
-  GetUserByIdResponse,
-  GetUsersRequest,
-  GetUsersResponse,
-  LoginUserRequest,
-  LoginUserResponse,
-} from "../generated/generated-proto";
+import { GetUsersRequest } from "../proto/user/GetUsersRequest";
+import { GetUsersResponse } from "../proto/user/GetUsersResponse";
+import { CreateUserRequest } from "../proto/user/CreateUserRequest";
+import { CreateUserResponse } from "../proto/user/CreateUserResponse";
+import { GetUserByIdRequest } from "../proto/user/GetUserByIdRequest";
+import { GetUserByIdResponse } from "../proto/user/GetUserByIdResponse";
+import { LoginUserRequest } from "../proto/user/LoginUserRequest";
+import { LoginUserResponse } from "../proto/user/LoginUserResponse";
 
 export const userHandlers = {
   GetUsers: async (
@@ -58,7 +56,15 @@ export const userHandlers = {
     callback: sendUnaryData<CreateUserResponse>
   ) => {
     try {
-      const { data: id, error } = await tryCatch(createUser(call.request));
+      const { firstName, lastName, password, email, company } = call.request;
+      if (!firstName || !lastName || !password || !email || !company) {
+        callback(new Error("Invalid request"));
+        return;
+      }
+
+      const { data: id, error } = await tryCatch(
+        createUser({ firstName, lastName, company, email, password })
+      );
       if (error) {
         callback(new Error(error.message));
         return;
