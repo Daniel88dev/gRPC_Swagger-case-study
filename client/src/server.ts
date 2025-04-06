@@ -35,6 +35,20 @@ app.get("/user/:id", (req, res) => {
   });
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// POST /login - zpracuje přihlášení
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  userClient.LoginUser({ email, password }, (err: any, response: any) => {
+    if (err) return res.render("login", { error: err.message });
+    res.render("loginResult", { token: response.token });
+  });
+});
+
 app.get("/", (_, res) => {
   res.send(`
     <h2>gRPC Client is running</h2>
