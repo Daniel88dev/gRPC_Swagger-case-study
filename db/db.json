@@ -103,6 +103,14 @@
       "company": "BrightApps",
       "email": "james.martin@brightapps.org",
       "password": "$2b$10$qOjc2wfXhRqfchBO4PPPleGcl1IAozjFmnLGEaggnqlkEVcSifYDu"
+    },
+    {
+      "id": "QFCW2",
+      "firstName": "Daniel",
+      "lastName": "Hrynusiw",
+      "company": "Hyundai",
+      "email": "daniel.hrynusiw@gmail.com",
+      "password": "$2b$10$HuyzlFz.et0Rm4I.j2Mi4.sQhQiJkUBU1eI9KJ1t/1qwqOHH3knQi"
     }
   ]
 }

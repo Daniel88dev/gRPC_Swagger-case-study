@@ -49,6 +49,24 @@ app.post("/login", (req, res) => {
   });
 });
 
+// GET /create-user - zobrazí formulář
+app.get("/create-user", (req, res) => {
+  res.render("createUser");
+});
+
+// POST /create-user - zpracuje registraci
+app.post("/create-user", (req, res) => {
+  const { firstName, lastName, company, email, password } = req.body;
+
+  userClient.CreateUser(
+    { firstName, lastName, company, email, password },
+    (err: any, response: any) => {
+      if (err) return res.render("createUser", { error: err.message });
+      res.redirect(`/user/${response.id}`);
+    }
+  );
+});
+
 app.get("/", (_, res) => {
   res.send(`
     <h2>gRPC Client is running</h2>
