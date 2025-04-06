@@ -29,6 +29,7 @@ app.get("/", (_, res) => {
       <li><a href="/user/create">User Registration</a></li>
       <li><a href="/users">Load users</a></li>
       <li><a href="/login">Login user</a></li>
+      <li><a href="/docs">REST API documentation</a> </li>
     </ul>
   `);
 });
