@@ -1,8 +1,21 @@
 import express from "express";
-import { runSequence } from "./initial";
+import { userClient } from "./grpcClient";
+import path from "path";
+//import { runSequence } from "./initial";
 
 const app = express();
 const PORT = 8091;
+
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "../views"));
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/users", (req, res) => {
+  userClient.GetUsers({ offset: 1, limit: 5 }, (err: any, response: any) => {
+    if (err) return res.status(500).render("error", { message: err.message });
+    res.render("users", { users: response.users });
+  });
+});
 
 app.get("/", (_, res) => {
   res.send(`
