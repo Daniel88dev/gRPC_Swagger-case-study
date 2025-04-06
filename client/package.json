@@ -5,9 +5,11 @@
   "license": "ISC",
   "author": "Daniel Hrynusiw",
   "type": "commonjs",
-  "main": "src/client.ts",
+  "main": "src/server.ts",
   "scripts": {
-    "start-client": "ts-node-dev src/server.ts"
+    "start-dev-client": "ts-node-dev src/server.ts",
+    "build": "tsc",
+    "start-client": "node dist/server.js"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.13.2",

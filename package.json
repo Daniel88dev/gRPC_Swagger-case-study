@@ -5,11 +5,13 @@
   "license": "ISC",
   "author": "Daniel Hrynusiw",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "server/server.ts",
   "scripts": {
     "generate-proto": "yarn proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=server/proto/ server/proto/user.proto",
     "start-db": "json-server --watch db/db.json --port 8000",
-    "start-server": "ts-node-dev server/server.ts"
+    "start-dev-server": "ts-node-dev server/server.ts",
+    "build-server": "tsc",
+    "start-server": "node dist/server.js"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

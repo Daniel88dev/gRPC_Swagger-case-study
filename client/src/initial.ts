@@ -121,5 +121,3 @@ export async function runSequence() {
 
   console.log("All initialization tasks completed.");
 }
-
-runSequence();

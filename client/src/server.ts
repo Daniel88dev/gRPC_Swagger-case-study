@@ -1,4 +1,5 @@
 import express from "express";
+import { runSequence } from "./initial";
 
 const app = express();
 const PORT = 8091;
@@ -15,5 +16,7 @@ app.get("/", (_, res) => {
 });
 
 app.listen(PORT, () => {
+  //runSequence();
+
   console.log(`Client server running on http://localhost:${PORT}`);
 });
