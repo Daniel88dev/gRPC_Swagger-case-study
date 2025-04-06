@@ -5,7 +5,7 @@ import loginRoutes from "./routes/loginRoutes";
 import usersRoutes from "./routes/usersRoutes";
 import apiRoutes from "./routes/apiRoutes";
 import swaggerDocs from "./utils/swagger";
-//import { runSequence } from "./initial";
+import { runSequence } from "./initial";
 
 //middleware
 const app = express();
@@ -28,8 +28,10 @@ app.get("/", (_, res) => {
 });
 
 app.listen(PORT, async () => {
+  // function to enable/disable intiall required sequence
   //await runSequence();
 
+  //calling swagger docs
   swaggerDocs(app, PORT);
 
   console.log(`Client server running on http://localhost:${PORT}`);

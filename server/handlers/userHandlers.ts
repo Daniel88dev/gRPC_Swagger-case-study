@@ -15,7 +15,9 @@ import { GetUserByIdResponse } from "../proto/user/GetUserByIdResponse";
 import { LoginUserRequest } from "../proto/user/LoginUserRequest";
 import { LoginUserResponse } from "../proto/user/LoginUserResponse";
 
+// All gRPC handlers
 export const userHandlers = {
+  // Get Users gRPC handler
   GetUsers: async (
     call: ServerUnaryCall<GetUsersRequest, GetUsersResponse>,
     callback: sendUnaryData<GetUsersResponse>
@@ -51,6 +53,8 @@ export const userHandlers = {
       callback(new Error(err.message));
     }
   },
+
+  // Create User gRPC handler
   CreateUser: async (
     call: ServerUnaryCall<CreateUserRequest, CreateUserResponse>,
     callback: sendUnaryData<CreateUserResponse>
@@ -75,6 +79,8 @@ export const userHandlers = {
       callback(new Error(err.message));
     }
   },
+
+  // gRPC handler to get user details from entered User ID
   GetUserById: async (
     call: ServerUnaryCall<GetUserByIdRequest, GetUserByIdResponse>,
     callback: sendUnaryData<GetUserByIdResponse>
@@ -101,6 +107,8 @@ export const userHandlers = {
       callback(new Error(err.message));
     }
   },
+
+  // gRPC handler to Authenticate user. Sending back JWT token
   LoginUser: async (
     call: ServerUnaryCall<LoginUserRequest, LoginUserResponse>,
     callback: sendUnaryData<LoginUserResponse>

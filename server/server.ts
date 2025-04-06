@@ -20,7 +20,6 @@ const protoDefinition = loadSync(PROTO_PATH, {
 
 // Loading package definition.
 const proto = loadPackageDefinition(protoDefinition) as any as ProtoGrpcType;
-export const userProto = proto.user;
 
 const server = new Server();
 

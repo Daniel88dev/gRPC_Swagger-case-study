@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { userClient } from "./grpcClient";
-import { response } from "express";
 
+// define type for user array in user-init.json
 type UserInput = {
   firstName: string;
   lastName: string;
@@ -11,14 +11,17 @@ type UserInput = {
   password: string;
 };
 
+// load file with users
 const usersInput: UserInput[] = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "../user-init.json"), "utf-8")
 );
 
+// delay function to make a small pause between each sequence operation
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// required sequences to be run after the server is started
 export async function runSequence() {
   const usersIds: string[] = [];
 

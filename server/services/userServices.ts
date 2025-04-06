@@ -65,7 +65,7 @@ export const createUser = async (data: Omit<User, "id">) => {
 
   return newUser.id;
 };
-
+// get User data from entered User ID
 export const getUserById = async (id: string) => {
   const user: AxiosResponse<User> = await axios(`${db}/${id}`);
   if (user.status !== 200) {
@@ -83,6 +83,7 @@ export const getUserById = async (id: string) => {
   return formatedUser;
 };
 
+// logic for authenticating a user
 export const loginUser = async (email: string, password: string) => {
   const result: AxiosResponse<User[]> = await axios(`${db}/?email=${email}`);
 
