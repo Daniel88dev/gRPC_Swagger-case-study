@@ -4,7 +4,7 @@ block content
   h1 Create User
   if error
     p(style="color:red") #{error}
-  form(action="/create-user", method="POST")
+  form(action="/user/create", method="POST")
     label First name:
     input(type="text", name="firstName", required)
     br
