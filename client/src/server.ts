@@ -28,8 +28,8 @@ app.get("/", (_, res) => {
 });
 
 app.listen(PORT, async () => {
-  // function to enable/disable intiall required sequence
-  //await runSequence();
+  // function to enable/disable initial required sequence
+  await runSequence();
 
   //calling swagger docs
   swaggerDocs(app, PORT);
