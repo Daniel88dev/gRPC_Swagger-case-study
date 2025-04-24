@@ -43,8 +43,8 @@
 
 - Kód nahraj na **GitLab** nebo **GitHub**.
 - Přidej přístup k repozitáři pro:
-    - `petr.volf@marketing.bi`
-    - `daniel.maczak@marketing.bi`
+    - `****`
+    - `****`
 
 ### 3.1 Součástí repozitáře budou:
 - Zdrojové kódy obou aplikací (Server + Client)
